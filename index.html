@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="outpout">0</div>
+        <div class="touch"><input type="button" value="AC" onclick="Reset()">
+            <input type="button" value="CE" onclick="removeOne()">
+            <input type="button" value="*" onclick="showValue(this)">
+            <br>
+            <input type="button" value="/" onclick="showValue(this)">
+            <input type="button" value="-" onclick="showValue(this)">
+            <input type="button" value="+" onclick="showValue(this)">
+            <br>
+            <input type="button" value="7" onclick="showValue(this)" id="number">
+            <input type="button" value="8" onclick="showValue(this)" id="number">
+            <input type="button" value="9" onclick="showValue(this)" id="number">
+            <br>
+            <input type="button" value="4" onclick="showValue(this)" id="number">
+            <input type="button" value="5" onclick="showValue(this)" id="number">
+            <input type="button" value="6" onclick="showValue(this)" id="number">
+            <br>
+            <input type="button" value="1" onclick="showValue(this)" id="number">
+            <input type="button" value="2" onclick="showValue(this)" id="number">
+            <input type="button" value="3" onclick="showValue(this)" id="number">
+            <br>
+            <input type="button" value="0" onclick="showValue(this)" id="number">
+            <input type="button" value="." onclick="showValue(this)" id="number">
+            <input type="button" value="=" onclick="eq()">
+        </div>
+        <div class="footer">&copy;ConstantHOUNGBEDJI</div>
+    </div>
+    <script text="javascript">
+        let shower = document.querySelector('.outpout');
+        let touch = document.querySelectorAll('#number');
+        let input = "";
+
+        function showValue(btn) {
+            input += btn.value;
+            shower.innerHTML = input;
+        }
+
+        function eq() {
+            if (Number.isInteger(eval(input))) {
+                shower.innerHTML = eval(input);
+            } else {
+                let arr = Math.floor(eval(input) * 100) / 100;
+                shower.innerHTML = arr.toFixed(2);
+            }
+        }
+
+        function Reset() {
+            input = '';
+            shower.innerHTML = 0;
+        }
+
+        function removeOne() {
+            input = input.replace(input.slice(-1), "");
+
+            if (input == "") {
+                shower.innerHTML = 0;
+            } else {
+                shower.innerHTML = input;
+            }
+        }
+    </script>
+</body>
+
+</html>
