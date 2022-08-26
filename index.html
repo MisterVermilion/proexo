@@ -51,7 +51,10 @@
         function eq() {
             if (Number.isInteger(eval(input))) {
                 shower.innerHTML = eval(input);
-            } else {
+            } else if(eval(input) == Infinity || undefined ||NaN){
+            shower.innerHTML = "Erreur";
+            }
+            else {
                 let arr = Math.floor(eval(input) * 100) / 100;
                 shower.innerHTML = arr.toFixed(2);
             }
